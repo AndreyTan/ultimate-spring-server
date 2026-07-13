@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package com.example.grpc.order;
+
+// Сообщения для пользователей (используются в заказах)
+message User {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+  string created_at = 4; // ISO-8601 строка
+}
+
+// Сообщения для продуктов
+message Product {
+  int64 id = 1;
+  string name = 2;
+  double price = 3;
+  int32 stock = 4;
+  string created_at = 5;
+}
+
+// Сообщение для заказа
+message Order {
+  int64 id = 1;
+  int64 user_id = 2;
+  int64 product_id = 3;
+  int32 quantity = 4;
+  string order_date = 5;   // ISO-8601 строка
+  string status = 6;       // PENDING, SHIPPED, DELIVERED, CANCELLED
+  // Опционально: можно вложить объекты User и Product для более полных ответов,
+  // но для простоты оставим только ID.
+}
+
+// Запросы и ответы
+message CreateOrderRequest {
+  int64 user_id = 1;
+  int64 product_id = 2;
+  int32 quantity = 3;
+}
+
+message GetOrderRequest {
+  int64 id = 1;
+}
+
+message UpdateOrderStatusRequest {
+  int64 id = 1;
+  string status = 2; // PENDING, SHIPPED, DELIVERED, CANCELLED
+}
+
+message CancelOrderRequest {
+  int64 id = 1;
+}
+
+message ListOrdersRequest {
+  // можно добавить фильтры (например, userId, productId)
+  int64 user_id = 1;   // если != 0, фильтровать по пользователю
+  int64 product_id = 2; // если != 0, фильтровать по продукту
+}
+
+message ListOrdersResponse {
+  repeated Order orders = 1;
+}
+
+message Empty {}
+
+// Сервис
+service OrderService {
+  rpc CreateOrder (CreateOrderRequest) returns (Order);
+  rpc GetOrder (GetOrderRequest) returns (Order);
+  rpc ListOrders (ListOrdersRequest) returns (ListOrdersResponse);
+  rpc UpdateOrderStatus (UpdateOrderStatusRequest) returns (Order);
+  rpc CancelOrder (CancelOrderRequest) returns (Empty);
+}

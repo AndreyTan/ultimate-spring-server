@@ -1,0 +1,45 @@
+# Compiled class files
+*/target/
+target/
+*.class
+
+# Log files
+*.log
+
+# Maven build output
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+.springBeans
+.sts4-cache
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database (SQLite) – игнорируем бинарные файлы БД
+*.db
+*.sqlite
+*.sqlite3
+
+# Application generated files
+*.pid
+*.lock
