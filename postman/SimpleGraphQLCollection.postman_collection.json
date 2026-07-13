@@ -1,0 +1,203 @@
+{
+  "info": {
+    "_postman_id": "e83e8ca2-f1fb-4cd0-b2c3-a3b4ea0f499f",
+    "name": "SimpleGraphQLCollection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48222026",
+    "_collection_link": "https://go.postman.co/collection/48222026-e83e8ca2-f1fb-4cd0-b2c3-a3b4ea0f499f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Создать пользователя",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "mutation {\r\n    createUser(input: { name: \"Mike\", email: \"mike@gmail.com\" }) {\r\n        id\r\n        name\r\n        email\r\n    }\r\n}\r\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создать продукт",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "mutation {\r\n    createProduct(input: { name: \"Mouse\", price: 500, stock: 25 }) {\r\n        id\r\n        name\r\n        price\r\n    }\r\n}\r\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создать заказ",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "mutation {\r\n    createOrder(input: { userId: 2, productId: 1, quantity: 2 }) {\r\n        id\r\n        userId\r\n        productId\r\n        quantity\r\n        status\r\n    }\r\n}\r\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получить всех пользователей",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "{\r\n    users {\r\n        id\r\n        name\r\n        email\r\n        createdAt\r\n    }\r\n}",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получить продукт по его id",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "{\r\n    product(id: 1) {\r\n        id\r\n        name\r\n        price\r\n        stock\r\n    }\r\n}\r\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получить заказы пользователя по его id",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "{\r\n    ordersByUser(userId: 1) {\r\n        id\r\n        userId\r\n        productId\r\n        quantity\r\n        status\r\n    }\r\n}\r\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Обновить заказ",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "mutation {\r\n    updateOrderStatus(id: 1, status: \"SHIPPED\") {\r\n        id\r\n        status\r\n    }\r\n}\r\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Отменить заказ",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "graphql",
+          "graphql": {
+            "query": "mutation {\r\n    cancelOrder(id: 1)\r\n}\r\n",
+            "variables": ""
+          }
+        },
+        "url": {
+          "raw": "{{baseHTPPURL}}/graphql",
+          "host": [
+            "{{baseHTPPURL}}"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
