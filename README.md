@@ -19,18 +19,24 @@
 
 ## ️ Технологический стек
 
-| Компонент            | Технология                              |
-|----------------------|-----------------------------------------|
-| Фреймворк            | Spring Boot 4.1.0                       |
-| Язык                 | Java 21                                 |
-| База данных          | SQLite + Hibernate/JPA                  |
-| REST                 | Spring Web MVC                          |
-| GraphQL              | Spring for GraphQL                      |
-| gRPC                 | Spring gRPC (официальный стартер)       |
-| Сборка               | Maven 3.9+                              |
-| Тестирование         | JUnit, Postman, grpcurl                 |
+| Компонент            | Технология                        |
+|----------------------|-----------------------------------|
+| Фреймворк            | Spring Boot 4.1.0                 |
+| Язык                 | Java 21                           |
+| База данных          | SQLite + Hibernate/JPA            |
+| REST                 | Spring Web MVC                    |
+| GraphQL              | Spring for GraphQL                |
+| gRPC                 | Spring gRPC (официальный стартер) |
+| Сборка               | Maven 3.9+                        |
+| Тестирование         | Postman                           |
 
 ---
+
+## Тестовая документация
+
+В папке [`test-documentation/`](test-documentation/) вы найдёте:
+*   **Чек-лист** для быстрой проверки API (`checklists.md`).
+*   **Детальные тест-кейсы** для REST, GraphQL и gRPC API.
 
 ##  Структура базы данных
 
