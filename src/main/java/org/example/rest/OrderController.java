@@ -2,6 +2,7 @@ package org.example.rest;
 
 import jakarta.validation.Valid;
 import org.example.entity.Order;
+import org.example.exception.BusinessException;
 import org.example.rest.dto.OrderRequest;
 import org.example.rest.dto.OrderResponse;
 import org.example.service.OrderService;
@@ -41,7 +42,12 @@ public class OrderController {
 
     @PutMapping("/{id}/status")
     public OrderResponse updateOrderStatus(@PathVariable Long id, @RequestParam String status) {
-        Order.OrderStatus newStatus = Order.OrderStatus.valueOf(status.toUpperCase());
+        Order.OrderStatus newStatus;
+        try {
+            newStatus = Order.OrderStatus.valueOf(status.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new BusinessException("Invalid order status: " + status); // Вернет 400
+        }
         Order updated = orderService.updateStatus(id, newStatus);
         return OrderResponse.fromEntity(updated);
     }

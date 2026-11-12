@@ -7,19 +7,18 @@ grpc:
   server:
     port: 9090
 
-# Дополнительные настройки GraphQL (опционально)
 spring:
   datasource:
-    url: jdbc:sqlite:./data/orders.db   # путь к файлу БД
+    url: jdbc:sqlite:./data/orders.db
     driver-class-name: org.sqlite.JDBC
-    jpa:
-      database-platform: org.hibernate.community.dialect.SQLiteDialect
-      hibernate:
-        ddl-auto: validate   # не создавать таблицы автоматически, используем ручной скрипт
-      show-sql: true
+  jpa:
+    database-platform: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
   graphql:
     schema:
-      locations: classpath:graphql/** # Папка со схемой
+      locations: classpath:graphql/**
     graphiql:
       enabled: true
 

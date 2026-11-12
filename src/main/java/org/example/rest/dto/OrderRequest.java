@@ -2,11 +2,12 @@ package org.example.rest.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Setter
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class OrderRequest {
     @NotNull(message = "User ID is required")
     private Long userId;
